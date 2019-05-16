@@ -2,10 +2,6 @@ package top.sunspotsinys.calculator;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.net.URL;
 
 /**
  * @author SunspotsInys
@@ -21,7 +17,7 @@ public class Ui extends JFrame {
     public Ui(String title) {
         this.setVisible(true);
         this.setTitle(title);
-        this.setLayout(new GridLayout(3, 0));
+        this.setLayout(new GridLayout(2, 0));
         this.setSize(600, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -35,7 +31,6 @@ public class Ui extends JFrame {
         aboutItem.addActionListener(e -> new AboutDialog(Ui.this).setVisible(true));
         helpMenu.add(aboutItem);
         jMenuBar.add(helpMenu);
-        container.add(jMenuBar);
     }
 
     public void setTextField() {
@@ -76,9 +71,11 @@ class AboutDialog extends JDialog {
         JLabel jLabel = new JLabel(image);
         jPanel1.add(jLabel);
         JPanel jPanel2 = new JPanel();
-        JLabel jLabe2 = new JLabel();
+        JLabel jLabel2 = new JLabel("<html><body><p align=\\\"center\\\">项目开源地址：<br/>https://github.com/SunspotsInys/Calculator</p></body></html>", JLabel.CENTER);
+        jPanel2.add(jLabel2);
         container.add(new JPanel());
         container.add(jPanel1);
+        container.add(jPanel2);
 
     }
 }
