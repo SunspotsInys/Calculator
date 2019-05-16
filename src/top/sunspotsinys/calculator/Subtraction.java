@@ -11,7 +11,8 @@ public class Subtraction {
     public static String Res(String sub1, String sub2) {
         BigInteger int1 = new BigInteger(sub1);
         BigInteger int2 = new BigInteger(sub2);
-        return int1.subtract(int2).toString();
+        BigInteger res = int1.subtract(int2);
+        return res.toString();
 
     }
 
