@@ -14,12 +14,17 @@ public class Ui extends JFrame {
     private String s = "";
     private final String button = "789+456-123*.0=/";
 
+    private void Opt(JButton jButton) {
+        s += jButton.getText();
+    }
+
     public Ui(String title) {
         this.setVisible(true);
         this.setTitle(title);
         this.setLayout(new GridLayout(2, 0));
         this.setSize(600, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     public void setMenu() {
@@ -45,7 +50,7 @@ public class Ui extends JFrame {
             JButton jButton = new JButton(button.substring(i, i+1));
             jPanel2.add(jButton);
             jButton.addActionListener(e -> {
-                s += jButton.getText();
+                Opt(jButton);
                 jTextField.setText(s);
             });
         }
@@ -66,6 +71,7 @@ class AboutDialog extends JDialog {
         Container container = getContentPane();
         this.setLayout(new GridLayout(4, 1));
         this.setSize(300, 300);
+        this.setLocationRelativeTo(null);
         JPanel jPanel1 = new JPanel();
         ImageIcon image = new ImageIcon("src/image/cal.png");
         JLabel jLabel = new JLabel(image);
