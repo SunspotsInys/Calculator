@@ -14,8 +14,33 @@ public class Ui extends JFrame {
     private String s = "";
     private final String button = "789+456-123*.0=/";
 
-    private void Opt(JButton jButton) {
-        s += jButton.getText();
+    private void opt(JButton jButton) {
+        if ("=".equals(jButton.getText())) {
+            s = operation(s);
+        } else {
+            s += jButton.getText();
+        }
+        System.out.println(s);
+        jTextField.setText(s);
+    }
+
+    private String operation(String expression) {
+        String regex = "+|-|*|\\";
+        String[] s1 = expression.split("[+\\-*]", 2);
+        if ("+".equals(expression.substring(s1[0].length(), s1[0].length()+1))) {
+            System.out.println("+");
+            expression = Addition.Res(s1[0], s1[1]);
+        } else if ("-".equals(expression.substring(s1[0].length(), s1[0].length()+1))) {
+            System.out.println("-");
+            expression = Subtraction.Res(s1[0], s1[1]);
+        } else if ("*".equals(expression.substring(s1[0].length(), s1[0].length()+1))) {
+            System.out.println("-");
+            expression = Multiplication.Res(s1[0], s1[1]);
+        } else if ("\\".equals(expression.substring(s1[0].length(), s1[0].length()+1))) {
+            System.out.println("\\");
+            expression = "抱歉，未解决的运算！";
+        }
+        return expression;
     }
 
     public Ui(String title) {
@@ -50,8 +75,7 @@ public class Ui extends JFrame {
             JButton jButton = new JButton(button.substring(i, i+1));
             jPanel2.add(jButton);
             jButton.addActionListener(e -> {
-                Opt(jButton);
-                jTextField.setText(s);
+                opt(jButton);
             });
         }
         container.add(jPanel2);
